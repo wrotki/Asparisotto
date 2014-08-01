@@ -40,6 +40,7 @@ BoxMan.prototype.addWaiters =  function () {
 };
 BoxMan.prototype.initialize = function(scene) {
     Actor.prototype.scene = scene;
+    // TODO clarify interaction with the base class
     var prototype = BoxMan.prototype;
     if(!prototype.waiters) {
         prototype.waiters = [];

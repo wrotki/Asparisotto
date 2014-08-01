@@ -2,8 +2,8 @@ function ThreeDScene(){
 	this.moveEnabled = false;
     this.mouse = new THREE.Vector3( 0, 0, 1 );
     this.projector = new THREE.Projector();           
-    var container = dojo.doc.createElement( 'div' );
-	dojo.doc.body.appendChild( container );
+    var container = window.document.createElement( 'div' );
+	window.document.body.appendChild( container );
 	this.createStats(container);
     var renderer = this.createRenderer();
 	var scene = this.scene = new THREE.Scene();
@@ -37,18 +37,18 @@ function ThreeDScene(){
         thisScene.controls = tmpControls;
         return true;
     }
-	var controlsSwitch = dojo.query("select").forEach(
-        function(node, index, arr){
-	        node.addEventListener('change',switchControls);
-	        node.addEventListener('click',function(){
-	            console.log('click');
-	            return true;
-	        });
-	        node.addEventListener('focus',function(){
-	            console.log('focus');
-	            return true;
-	        });
-        });
+//	var controlsSwitch = dojo.query("select").forEach(
+//        function(node, index, arr){
+//	        node.addEventListener('change',switchControls);
+//	        node.addEventListener('click',function(){
+//	            console.log('click');
+//	            return true;
+//	        });
+//	        node.addEventListener('focus',function(){
+//	            console.log('focus');
+//	            return true;
+//	        });
+//        });
 
 	this.actors = [];
 	this.animations = [];
@@ -62,15 +62,15 @@ ThreeDScene.prototype.createStats = function(container){
 	container.appendChild( stats.domElement );
 };
 ThreeDScene.prototype.createRenderer = function(){
-    var canvasContainer = dojo.doc.createElement( 'div' );
+    var canvasContainer = window.document.createElement( 'div' );
     canvasContainer.style.position = 'absolute';
     canvasContainer.style.top = '55px';
     canvasContainer.style.left = '5px';
     canvasContainer.style.border = '5px';
     canvasContainer.style.zIndex = 10;
-	dojo.doc.body.appendChild( canvasContainer );
-    var viewport = dojo.window.getBox();
-    var w = viewport.w - 10, h = viewport.h -10 ;
+	window.document.body.appendChild( canvasContainer );
+//    var viewport = window.getBox();
+    var w = window.innerWidth - 10, h = window.innerHeight - 10 ;
     var renderer = this.renderer = new THREE.WebGLRenderer();
     renderer.sortObjects = false;
     renderer.setSize( w, h );
@@ -82,8 +82,8 @@ ThreeDScene.prototype.createRenderer = function(){
     return renderer;
 };
 ThreeDScene.prototype.createCamera = function(position){
-    var viewport = dojo.window.getBox();
-    var w = viewport.w - 10, h = viewport.h -10 ;
+//    var viewport = window.getBox();
+    var w = window.innerWidth - 10, h = window.innerHeight -10 ;
     var camera = this.camera = new THREE.PerspectiveCamera( 45, w / h, 1, 150000 );
     // camera = new THREE.OrthographicCamera( -1, 1, 1,
 	// -1, 0.1, 100.0 );

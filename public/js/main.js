@@ -18,8 +18,8 @@ requirejs.config({
   }
 });
 
-require(['angular', './controllers', './directives', './filters', './services', 'angular-route'],
-  function(angular, controllers) {
+require(['angular', './controllers', './scene/main', './directives', './filters', './services','angular-route'],
+  function(angular, controllers, scene) {
 
     // Declare app level module which depends on filters, and services
 
@@ -31,5 +31,7 @@ require(['angular', './controllers', './directives', './filters', './services', 
       }]);
 
     angular.bootstrap(document, ['myApp']);
-
+    window.OtherBrane = window.OtherBrane || {};
+    window.OtherBrane.moduleList = ['skybox/main'];
+    scene.animate();
 });

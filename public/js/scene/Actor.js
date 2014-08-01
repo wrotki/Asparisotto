@@ -14,7 +14,7 @@ function Actor(origin) {
 // Dummy loader and callback for models with no resources to download
 Actor.prototype.modelLoader = {
     load: function(url, callback) {
-        callback();
+        callback.call(this);
     }
 };
 Actor.prototype.modelCallback = function(geometry, materials) {
@@ -23,10 +23,14 @@ Actor.prototype.modelCallback = function(geometry, materials) {
 Actor.prototype.initialize = function(scene) {
     var prototype = Object.getPrototypeOf(this);
     Actor.prototype.scene = scene;
+    if(!prototype.waiters) {
+        prototype.waiters = [];
+    }
+    prototype.waiters.push(this);
     this.state = ACTOR_STATE.MODEL_REQUESTED;
     if(!prototype.modelRequested) {
         prototype.modelRequested = true;
-        prototype.modelLoader.load(prototype.modelUrl, prototype.modelCallback);
+        this,prototype.modelLoader.load.call(this,prototype.modelUrl, prototype.modelCallback);
     }
     this.initialized = true;
     return this;
@@ -46,7 +50,7 @@ Actor.prototype.addMeshesToScene = function(waiters){
     }
 };
 Actor.prototype.addWaiters = function(typeWaiters){
-//    var prototype = Object.getPrototypeOf(this);
+    var prototype = Object.getPrototypeOf(this);
     var waiters = typeWaiters;
     if(!waiters){
         waiters = prototype.waiters;

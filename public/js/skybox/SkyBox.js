@@ -34,3 +34,7 @@ SkyBox.prototype.createMeshes = function(){
     this.meshes.push(zmesh);
     return true;
 };
+SkyBox.prototype.modelCallback = function(geometry, materials) {
+    Actor.prototype.addWaiters.call(this);
+};
+
