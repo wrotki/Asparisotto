@@ -18,7 +18,7 @@ Actor.prototype.modelLoader = {
     }
 };
 Actor.prototype.modelCallback = function(geometry, materials) {
-    Actor.prototype.addWaiters();
+    Actor.prototype.addWaiters.call(this);
 };
 Actor.prototype.initialize = function(scene) {
     var prototype = Object.getPrototypeOf(this);

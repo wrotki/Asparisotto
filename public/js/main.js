@@ -1,5 +1,9 @@
 /*global require, requirejs */
 
+/*
+https://developer.salesforce.com/blogs/developer-relations/2014/07/building-single-page-app-angularjs-salesforce-rest-api.html?d=70130000000llMA&elq_mid=6929&elq_cid=3310046
+*/
+
 'use strict';
 
 requirejs.config({
@@ -32,6 +36,7 @@ require(['angular', './controllers', './scene/main', './directives', './filters'
 
     angular.bootstrap(document, ['myApp']);
     window.OtherBrane = window.OtherBrane || {};
-    window.OtherBrane.moduleList = ['skybox/main'];
+    window.OtherBrane.moduleList = ['skybox/main','floor/main'];
+    window.OtherBrane.mediaPath = '..';
     scene.animate();
 });

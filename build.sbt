@@ -9,6 +9,9 @@ libraryDependencies ++= Seq(
   "org.webjars" % "three.js" % "r66"
 )     
 
+
+// https://developer.salesforce.com/blogs/developer-relations/2014/07/building-single-page-app-angularjs-salesforce-rest-api.html?d=70130000000llMA&elq_mid=6929&elq_cid=3310046
+
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 pipelineStages := Seq(rjs, digest, gzip)
