@@ -36,7 +36,7 @@ require(['angular', './controllers', './scene/main', './directives', './filters'
 
     angular.bootstrap(document, ['myApp']);
     window.OtherBrane = window.OtherBrane || {};
-    window.OtherBrane.moduleList = ['skybox/main','floor/main'];
+    window.OtherBrane.moduleList = ['skybox/main','floor/main','models/main','charts/main'];
     window.OtherBrane.mediaPath = '..';
     scene.animate();
 });

@@ -13,7 +13,13 @@ function Lamp(origin)
 Lamp.prototype = Object.create(Actor.prototype);
 Lamp.prototype.constructor = Lamp;
 Lamp.prototype.modelUrl = path + "/3d/lamp.js";
-Lamp.prototype.modelLoader = new THREE.JSONLoader();
+var jsonLoader = new THREE.JSONLoader();
+var lampLoader = {
+    load: function ( url, callback, texturePath ) {
+        jsonLoader.load.call(jsonLoader, url, callback, texturePath);
+    }
+};
+Lamp.prototype.modelLoader = lampLoader;
 Lamp.prototype.modelCallback =  function ( model ) {
         Lamp.prototype.model = model;        
         Lamp.prototype.addWaiters(); // Depends on the global window.OtherBrane.threeDScene

@@ -30,7 +30,10 @@ Actor.prototype.initialize = function(scene) {
     this.state = ACTOR_STATE.MODEL_REQUESTED;
     if(!prototype.modelRequested) {
         prototype.modelRequested = true;
-        this,prototype.modelLoader.load.call(this,prototype.modelUrl, prototype.modelCallback);
+        if(prototype.modelLoader){
+            prototype.modelLoader.load.call(this,prototype.modelUrl, prototype.modelCallback);
+//            prototype.modelLoader.load.call(prototype.modelLoader,prototype.modelUrl, prototype.modelCallback);
+        }
     }
     this.initialized = true;
     return this;

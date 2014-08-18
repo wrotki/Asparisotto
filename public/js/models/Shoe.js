@@ -8,7 +8,14 @@ Shoe.prototype.constructor = Shoe;
 var OB = window.OtherBrane;
 var path = OB.mediaPath;
 Shoe.prototype.modelUrl = path + "/3d/shoe.js";
-Shoe.prototype.modelLoader = new THREE.JSONLoader();
+var jsonLoader = new THREE.JSONLoader();
+var shoeLoader = {
+    load: function ( url, callback, texturePath ) {
+        jsonLoader.load.call(jsonLoader, url, callback, texturePath);
+    }
+};
+
+Shoe.prototype.modelLoader = shoeLoader;
 Shoe.prototype.modelCallback = function( geometry, materials ){
         Shoe.prototype.model = geometry;
         Shoe.prototype.materials = materials;            
