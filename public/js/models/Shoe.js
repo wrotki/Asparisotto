@@ -8,20 +8,23 @@ Shoe.prototype.constructor = Shoe;
 var OB = window.OtherBrane;
 var path = OB.mediaPath;
 Shoe.prototype.modelUrl = path + "/3d/shoe.js";
-var jsonLoader = new THREE.JSONLoader();
-var shoeLoader = {
+Shoe.prototype.jsonLoader = new THREE.JSONLoader();
+Shoe.prototype.modelLoader = {
     load: function ( url, callback, texturePath ) {
-        jsonLoader.load.call(jsonLoader, url, callback, texturePath);
+        jsonLoader.load(url, callback, texturePath);
     }
 };
-
-Shoe.prototype.modelLoader = shoeLoader;
 Shoe.prototype.modelCallback = function( geometry, materials ){
-        Shoe.prototype.model = geometry;
-        Shoe.prototype.materials = materials;            
-        Shoe.prototype.addWaiters(); // Depends on the global window.OtherBrane.threeDScene
+    Shoe.prototype.model = geometry;
+    Shoe.prototype.materials = materials;
+    Shoe.prototype.addWaiters(); // Depends on the global window.OtherBrane.threeDScene
 };
-
+Shoe.prototype.addWaiters =  function () { // Sucks to have to define this
+    Actor.prototype.addMeshesToScene(Shoe.prototype.waiters);
+};
+Shoe.prototype.initialize = function(scene) {
+    Actor.prototype.initialize.call(this,scene);
+};
 Shoe.prototype.createMeshes = function(){
     var zmesh = new THREE.Mesh(Shoe.prototype.model, new THREE.MeshFaceMaterial(Shoe.prototype.materials));
     zmesh.position.set( this.origin.x, this.origin.y, this.origin.z );
@@ -30,7 +33,6 @@ Shoe.prototype.createMeshes = function(){
     this.meshes.push(zmesh);
 	return true;
 };
-
 Shoe.prototype.update = function(){
 	if(!this.meshes || ! this.meshes[0]){
 		return;

@@ -24,6 +24,12 @@ Lamp.prototype.modelCallback =  function ( model ) {
         Lamp.prototype.model = model;        
         Lamp.prototype.addWaiters(); // Depends on the global window.OtherBrane.threeDScene
 };
+Lamp.prototype.addWaiters =  function () {// Sucks to have to define this
+    Actor.prototype.addMeshesToScene(Lamp.prototype.waiters);
+};
+Lamp.prototype.initialize = function(scene) {
+    Actor.prototype.initialize.call(this,scene);
+};
 Lamp.prototype.createMeshes = function(){
     var zmesh = new THREE.SkinnedMesh(Lamp.prototype.model, new THREE.MeshLambertMaterial( { color: 0x606060, morphTargets: true } ));
     // Dirty hack to workaround missing property crashing Three.js
