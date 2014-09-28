@@ -22,21 +22,56 @@ requirejs.config({
   }
 });
 
+//function MyController($scope, greeter) {
+//  $scope.sayHello = function() {
+//    greeter.greet('Hello World');
+//  };
+//}
+
+// https://github.com/cubicleDowns/webgl-code-samples/tree/master/ng-3D-TTT
+// https://medium.com/@dickeyxxx/best-practices-for-building-angular-js-apps-266c1a4a6917
+
 require(['angular', './controllers', './scene/main', './directives', './filters', './services','angular-route'],
   function(angular, controllers, scene) {
 
     // Declare app level module which depends on filters, and services
 
-    angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 'ngRoute']).
-      config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: controllers.MyCtrl1});
-        $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: controllers.MyCtrl2});
-        $routeProvider.otherwise({redirectTo: '/view1'});
-      }]);
+    angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 'myApp.scene', 'ngRoute'])
+        .config(['$routeProvider', function($routeProvider) {
+            $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: controllers.MyCtrl1});
+            $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: controllers.MyCtrl2});
+            $routeProvider.otherwise({redirectTo: '/view1'});
+        }])
+        .controller("MyController",["$scope","greeter",function($scope,greeter){
+          $scope.sayHello = function() {
+              greeter.greet('Dupa Biskupa');
+            };
+          $scope.moduleList = ['skybox/main','floor/main','models/main','charts/main'];
+        }])
+        .factory('greeter',['$window',function($window){
+            return {
+                greet: function(text) {
+                  $window.alert(text);
+                }
+              };
+        }])
+        .factory('scene',['$window',function($window){
+            return {
+              animate: function() {
+                scene.animate();
+              }
+            };
+        }])
+        .run(['scene',function(injectedScene){
+//            scene.animate();
+            injectedScene.animate();
+        }]);
 
-    angular.bootstrap(document, ['myApp']);
+
+
     window.OtherBrane = window.OtherBrane || {};
     window.OtherBrane.moduleList = ['skybox/main','floor/main','models/main','charts/main'];
     window.OtherBrane.mediaPath = '..';
-    scene.animate();
+//    scene.animate();
+    angular.bootstrap(document, ['myApp']);
 });
