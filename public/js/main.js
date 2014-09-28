@@ -42,12 +42,6 @@ require(['angular', './controllers', './scene/main', './directives', './filters'
             $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: controllers.MyCtrl2});
             $routeProvider.otherwise({redirectTo: '/view1'});
         }])
-        .controller("MyController",["$scope","greeter",function($scope,greeter){
-          $scope.sayHello = function() {
-              greeter.greet('Dupa Biskupa');
-            };
-          $scope.moduleList = ['skybox/main','floor/main','models/main','charts/main'];
-        }])
         .factory('greeter',['$window',function($window){
             return {
                 greet: function(text) {
@@ -55,17 +49,20 @@ require(['angular', './controllers', './scene/main', './directives', './filters'
                 }
               };
         }])
-        .factory('scene',['$window',function($window){
-            return {
-              animate: function() {
-                scene.animate();
-              }
+        .controller("MyController",['$scope','greeter',function($scope,greeter){
+          $scope.sayHello = function() {
+              greeter.greet('Dupa Biskupa');
             };
+//          $scope.moduleList = ['skybox/main','floor/main','models/main','charts/main'];
         }])
-        .run(['scene',function(injectedScene){
-//            scene.animate();
-            injectedScene.animate();
-        }]);
+//        .factory('scene',['$window',function($window){
+//            return {
+//              animate: function() {
+//                scene.animate();
+//              }
+//            };
+//        }])
+;
 
 
 

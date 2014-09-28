@@ -3,7 +3,7 @@ define([
     "scene/CameraControls","scene/ThreeDScene","scene/Constants","scene/Functions","scene/Actor","scene/ColladaLoader"
     ],
 		function(angular){
-		    var scene = {
+		    var sceneObj = {
                 animate: function(){
                     require(window.OtherBrane.moduleList, function(){ // The module list come from a list of S3 directories - obtained from /WebGLFirst/Config (dojoconfig.jsp)
         //					        return;
@@ -21,8 +21,15 @@ define([
                 }
             };
 		    angular.module('myApp.scene',[])
-		        .factory('scene',['$scope',function($scope){
-		            return scene;
-		    }]);
-			return scene;
+                .controller("My3dController",["$scope",function($scope){
+                  $scope.moduleList = ['skybox/main','floor/main','models/main','charts/main'];
+                }])
+		        .factory('scene',[function(){
+		            return sceneObj;
+		        }])
+                .run(['scene',function(scene){
+                    scene.animate();
+                }])
+                ;
+//			return scene;
 });
