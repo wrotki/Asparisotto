@@ -1,4 +1,4 @@
-require(["scene/ThreeDebug"], function(){ // The module list come from a list of S3 directories
+define(["scene/ThreeDebug"], function(){ // The module list come from a list of S3 directories
 /**
  * @author James Baicoianu / http://www.baicoianu.com/
  */

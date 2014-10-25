@@ -31,8 +31,8 @@ requirejs.config({
 // https://github.com/cubicleDowns/webgl-code-samples/tree/master/ng-3D-TTT
 // https://medium.com/@dickeyxxx/best-practices-for-building-angular-js-apps-266c1a4a6917
 
-require(['angular', './controllers', './scene/main', './directives', './filters', './services','angular-route'],
-  function(angular, controllers, scene) {
+require(['angular', './controllers', /*'domReady!',*/ 'scene/main', './directives', './filters', './services','angular-route'],
+  function(angular, controllers) {
 
     // Declare app level module which depends on filters, and services
 
