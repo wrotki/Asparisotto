@@ -76,6 +76,7 @@ define(
                 container.appendChild( stats.domElement );
             },
         createRenderer: function(){
+            var w = window.innerWidth - 10, h = window.innerHeight - 10 ;
             var canvasContainer = window.document.createElement( 'div' );
             canvasContainer.style.position = 'absolute';
             canvasContainer.style.top = '55px';
@@ -84,7 +85,6 @@ define(
             canvasContainer.style.zIndex = 10;
             window.document.body.appendChild( canvasContainer );
         //    var viewport = window.getBox();
-            var w = window.innerWidth - 10, h = window.innerHeight - 10 ;
             var renderer = this.renderer = new THREE.WebGLRenderer();
             renderer.sortObjects = false;
             renderer.setSize( w, h );

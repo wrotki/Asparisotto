@@ -5,6 +5,14 @@ function Shoe(origin)
 }
 Shoe.prototype = Object.create(Actor.prototype);
 Shoe.prototype.constructor = Shoe;
+Shoe.prototype.createMeshes = function(){
+    var zmesh = new THREE.Mesh(Shoe.prototype.model, new THREE.MeshFaceMaterial(Shoe.prototype.materials));
+    zmesh.position.set( this.origin.x, this.origin.y, this.origin.z );
+    zmesh.scale.set( 1, 1, 1 );
+    zmesh.overdraw = true;
+    this.meshes.push(zmesh);
+	return true;
+};
 var OB = window.OtherBrane;
 var path = OB.mediaPath;
 Shoe.prototype.modelUrl = path + "/3d/shoe.js";
@@ -24,14 +32,6 @@ Shoe.prototype.addWaiters =  function () { // Sucks to have to define this
 };
 Shoe.prototype.initialize = function(scene) {
     Actor.prototype.initialize.call(this,scene);
-};
-Shoe.prototype.createMeshes = function(){
-    var zmesh = new THREE.Mesh(Shoe.prototype.model, new THREE.MeshFaceMaterial(Shoe.prototype.materials));
-    zmesh.position.set( this.origin.x, this.origin.y, this.origin.z );
-    zmesh.scale.set( 1, 1, 1 );
-    zmesh.overdraw = true;
-    this.meshes.push(zmesh);
-	return true;
 };
 Shoe.prototype.update = function(){
 	if(!this.meshes || ! this.meshes[0]){
