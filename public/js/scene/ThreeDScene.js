@@ -6,10 +6,8 @@ define(
 
     function ThreeDScene(){
         if (!(this instanceof ThreeDScene)) {
-            throw new TypeError("Person constructor cannot be called as a function.");
+            throw new TypeError("Constructor cannot be called as a function.");
         }
-
-
         this.moveEnabled = false;
         this.mouse = new THREE.Vector3( 0, 0, 1 );
         this.projector = new THREE.Projector();

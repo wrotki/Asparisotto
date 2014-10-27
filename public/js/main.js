@@ -2,6 +2,7 @@
 
 /*
 https://developer.salesforce.com/blogs/developer-relations/2014/07/building-single-page-app-angularjs-salesforce-rest-api.html?d=70130000000llMA&elq_mid=6929&elq_cid=3310046
+http://www.artima.com/articles/dci_vision.html
 */
 
 'use strict';
