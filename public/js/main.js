@@ -37,13 +37,6 @@ require(['angular', './controllers', 'scene/main', './directives', './filters', 
             $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: controllers.MyCtrl2});
             $routeProvider.otherwise({redirectTo: '/view1'});
         }])
-        .factory('greeter',['$window',function($window){
-            return {
-                greet: function(text) {
-                  $window.alert(text);
-                }
-              };
-        }])
     ;
     angular.bootstrap(document, ['myApp']);
 });

@@ -2,7 +2,8 @@
 // http://www.96methods.com/2012/02/three-js-importing-a-model/
 //		THREE.AnimationHandler.add( geometry.animation );
 // http://blog.tojicode.com/2011/10/building-game-part-3-skinning-animation.html
-// These need to be defined prior to asActor call on the type
+define(function(){
+  function LampDef(injectables){
 var OB = window.OtherBrane;
 var path = OB.mediaPath;
 function Lamp(origin)
@@ -41,3 +42,8 @@ Lamp.prototype.createMeshes = function(){
     this.meshes.push(zmesh);
 	return true;
 };
+
+    return Floor;
+  }
+  return FloorDef;
+});
