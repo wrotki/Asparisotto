@@ -1,6 +1,6 @@
-define(["models/Shoe"],/* "models/AnimateLampComponent", "models/Lamp",
+define(["angular","models/Shoe"],/* "models/AnimateLampComponent", "models/Lamp",
     "models/LampCollada", "models/BoxMan", "models/BoxManBehaviorComponent"]*/
-		function(ShoeDef/*,AnimateLampComponent,LampDef*/){
+		function(angular,ShoeDef/*,AnimateLampComponent,LampDef*/){
         var modelsModule = angular.module('Models',[]);
         modelsModule
             .factory('models',['mediaPath','threeDScene',

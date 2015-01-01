@@ -1,5 +1,5 @@
-define(["skybox/SkyBox"], 
-        function(SkyBoxDef){ // SkyBoxDef is a function constructing the SkyBox class
+define(["angular","skybox/SkyBox"],
+        function(angular,SkyBoxDef){ // SkyBoxDef is a function constructing the SkyBox class
             var skyBoxModule = angular.module('SkyBox',[]);
             skyBoxModule.factory('skyBox',['mediaPath','threeDScene',function(mediaPath,threeDScene){
                 var injectables = { 'basePath': mediaPath };

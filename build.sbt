@@ -11,6 +11,8 @@ libraryDependencies ++= Seq(
 
 
 // https://developer.salesforce.com/blogs/developer-relations/2014/07/building-single-page-app-angularjs-salesforce-rest-api.html?d=70130000000llMA&elq_mid=6929&elq_cid=3310046
+// http://www.warski.org/blog/2014/05/spray-server-docker-container/
+
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 

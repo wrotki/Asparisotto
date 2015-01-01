@@ -1,5 +1,5 @@
-define(["floor/Floor"], 
-    function(FloorDef){ // FloorDef is a function constructing the Floor class
+define(["angular","floor/Floor"],
+    function(angular,FloorDef){ // FloorDef is a function constructing the Floor class
         var floorModule = angular.module('Floor',[]);
         floorModule.factory('floor',['mediaPath','threeDScene',function(mediaPath,threeDScene){
             var injectables = { 'basePath': mediaPath };
