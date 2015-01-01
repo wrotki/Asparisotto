@@ -1,14 +1,17 @@
-define(["angular","models/Shoe"],/* "models/AnimateLampComponent", "models/Lamp",
-    "models/LampCollada", "models/BoxMan", "models/BoxManBehaviorComponent"]*/
-		function(angular,ShoeDef/*,AnimateLampComponent,LampDef*/){
+define(["angular","models/Shoe", "models/BoxMan"],/* "models/AnimateLampComponent", "models/Lamp",
+    "models/LampCollada", "models/BoxManBehaviorComponent"]*/
+		function(angular,ShoeDef,BoxManDef/*,AnimateLampComponent,LampDef*/){
         var modelsModule = angular.module('Models',[]);
         modelsModule
             .factory('models',['mediaPath','threeDScene',
                 function(mediaPath,threeDScene){
                     var injectables = { 'basePath': mediaPath };
-                    var Shoe = ShoeDef(injectables); // ShoeDef is a function constructing the Shoe class
+                    var Shoe = ShoeDef(injectables); // ShoeDef is a function constructing the Shoe class (constructor)
                     var shoe = new Shoe({x: 0, y: 0, z: 0});
                     threeDScene.addActor(shoe);
+                    var BoxMan = BoxManDef(injectables); // ShoeDef is a function constructing the Shoe class (constructor)
+                    var boxMan = new BoxMan({x: 50, y: 50, z: -50});
+                    threeDScene.addActor(boxMan);
                     return shoe;
                     }])
             // .factory(...
