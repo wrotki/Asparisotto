@@ -24,7 +24,7 @@ define('scene/main',
             };
 		    angular.module('myApp.scene',['SkyBox','Floor','Models'])
 		        .value('threeDScene',new ThreeDScene())
-		        .value('mediaPath','..')
+		        .value('mediaPath','/assets')
 		        .factory('scene',[function(){
 		            return sceneObj;
 		        }])

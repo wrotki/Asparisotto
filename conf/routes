@@ -2,9 +2,23 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-
 # Home page
 GET        /                                 controllers.Application.index()
 
+# WebJars
+GET         /webjars/*file          controllers.WebJarAssets.at(file)
+
 # Map the JS resource paths
-GET        /*file                            controllers.Assets.versioned(path="/public", file: Asset)
+#GET        /*file                            controllers.Assets.versioned(path="/public", file: Asset)
+
+# Versioned Assets
+#GET         /vassets/*file          controllers.Assets.versioned(path="/public", file: Asset)
+
+# Unversioned Assets
+GET         /assets/*file           controllers.Assets.at(path="/public", file)
+GET         /assets/img/*file           controllers.Assets.at(path="/public/img", file)
+GET         /assets/css/*file           controllers.Assets.at(path="/public/css", file)
+GET         /assets/js/*file           controllers.Assets.at(path="/public/js", file)
+GET         /assets/3d/*file           controllers.Assets.at(path="/public/3d", file)
+GET         /assets/partials/*file           controllers.Assets.at(path="/public/partials", file)
+
