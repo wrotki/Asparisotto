@@ -87,8 +87,8 @@ define(
             renderer.sortObjects = false;
             renderer.setSize( w, h );
             renderer.domElement.style.position = 'absolute';
-            renderer.domElement.style.top = '5px';
-            renderer.domElement.style.left = '5px';
+            renderer.domElement.style.top = '50px';
+            renderer.domElement.style.left = '200px';
             renderer.domElement.style.border = '5px';
             canvasContainer.appendChild( renderer.domElement );
             return renderer;

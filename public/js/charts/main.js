@@ -1,8 +1,19 @@
-define(["charts/ChartShaders", "charts/Chart","charts/ChartGroup"], 
-		function(){
-			Array.max = function( array ){
-				return Math.max.apply( Math, array );
-			};
+define(["angular","charts/Chart","charts/ChartShaders", "charts/ChartGroup"],
+		function(angular,ChartDef){
+            var modelsModule = angular.module('Charts',[]);
+            modelsModule.factory('charts',['mediaPath','threeDScene',
+                function(mediaPath,threeDScene){
+                    var injectables = { 'basePath': mediaPath };
+                    var Chart = ChartDef(injectables); // ShoeDef is a function constructing the Shoe class (constructor)
+                    var chartData = [1,2,4,8,16,32,24,12];
+                    var chart = new Chart({x: 0, y: 0, z: -500},"US",0x88ffaa,chartData);
+                    threeDScene.addActor(chart);
+                    return chart; // TODO: is returning this needed?
+                    }]);
+
+            Array.max = function( array ){
+                return Math.max.apply( Math, array );
+            };
 			Array.min = function( array ){
 				return Math.min.apply( Math, array );
 			};
