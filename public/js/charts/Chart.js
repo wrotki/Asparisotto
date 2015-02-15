@@ -34,14 +34,14 @@ define(function(){
         function addChartBlock(index, value){
             var hScale = this.getHorizontalScale();
             var vScale = this.getVerticalScale();
-            //var geometry = new THREE.CubeGeometry( 30, value*vScale, 30 );
-            var geometry = new THREE.CubeGeometry( 30, 30, 30 );
+            var geometry = new THREE.CubeGeometry( 30, value*vScale, 30 );
+//            var geometry = new THREE.CubeGeometry( 30, 30, 30 );
 
             var tempMaterial = new THREE.MeshLambertMaterial({color: 0xFF0500});
 
             var chartBlock = new THREE.Mesh( geometry, tempMaterial );
             chartBlock.position.x = this.chartOrigin.x;
-            chartBlock.position.y = this.chartOrigin.y + /*value * */ vScale / 2;
+            chartBlock.position.y = this.chartOrigin.y + value * vScale / 2;
             chartBlock.position.z = this.chartOrigin.z - index * hScale;
             this.chartBlocks[index] = chartBlock;
 
@@ -72,8 +72,8 @@ define(function(){
             this.ruler = new Ruler(this);
         };
     //  TODO: uncomment
-    //	addChartLabel.call(this);
-    //	addRulers.call(this);
+    	addChartLabel.call(this);
+    	addRulers.call(this);
         this.chartBlocks = [];
         for(var i=0; i<this.series.length; i++){
             addChartBlock.call(this,i,this.series[i]);
@@ -99,12 +99,12 @@ define(function(){
         }
         this.setValues();
     //	TODO: uncomment
-    //	this.meshes.push(this.label);
+    	this.meshes.push(this.label);
     //
     //	// TODO: rework this to be a proper composite
-    //	for(var i in this.ruler.rulerLines){
-    //	    this.meshes.push(this.ruler.rulerLines[i]); // Includes label
-    //	}
+    	for(var i in this.ruler.rulerLines){
+    	    this.meshes.push(this.ruler.rulerLines[i]); // Includes label
+    	}
         return true;
     };
 

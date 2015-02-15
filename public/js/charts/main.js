@@ -1,4 +1,4 @@
-define(["angular","charts/Chart","charts/ChartShaders", "charts/ChartGroup"],
+define(["angular","charts/Chart","charts/ChartShaders", "charts/ChartGroup","charts/Ruler"],
 		function(angular,ChartDef){
             var modelsModule = angular.module('Charts',[]);
             modelsModule.factory('charts',['mediaPath','threeDScene',
