@@ -17,7 +17,9 @@ define(
         var renderer = this.createRenderer();
         var scene = this.scene = new THREE.Scene();
         scene.fog = new THREE.Fog( 0xffffff, 1, 100000 );
-        var camera = this.createCamera(scene.position);
+        var cameraPosition = new THREE.Vector3(-2000,300,-300);
+        var lookAt = new THREE.Vector3(0,0,-2000);
+        var camera = this.createCamera(cameraPosition, lookAt);
         this.createLights();
         this.clock = new THREE.Clock();
         this.createControls(camera);
@@ -87,22 +89,20 @@ define(
             renderer.sortObjects = false;
             renderer.setSize( w, h );
             renderer.domElement.style.position = 'absolute';
-            renderer.domElement.style.top = '50px';
-            renderer.domElement.style.left = '200px';
-            renderer.domElement.style.border = '5px';
+            renderer.domElement.style.top = '10px';
+            renderer.domElement.style.left = '10px';
+            renderer.domElement.style.border = '1px';
             canvasContainer.appendChild( renderer.domElement );
             return renderer;
             },
-        createCamera: function(position){
+        createCamera: function(position,lookAt){
             //    var viewport = window.getBox();
                 var w = window.innerWidth - 10, h = window.innerHeight -10 ;
                 var camera = this.camera = new THREE.PerspectiveCamera( 45, w / h, 1, 150000 );
                 // camera = new THREE.OrthographicCamera( -1, 1, 1,
                 // -1, 0.1, 100.0 );
-                camera.position.x = 0;
-                camera.position.y = 100;
-                camera.position.z = 1000;
-                camera.lookAt(position);
+                camera.position = position;
+                camera.lookAt(lookAt);
                 //camera.target.position.copy( scene.position );
                 //camera.lookAt(new THREE.Vector3( 0, 0, 0 ));
                 //camera.rotation.y = -90 * (Math.PI / 180);
