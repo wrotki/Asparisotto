@@ -1,8 +1,14 @@
+import com.github.play2war.plugin._
+
 name := """Asparisotto"""
 
 version := "1.0-SNAPSHOT"
 
 scalaVersion := "2.11.2"
+
+Play2WarPlugin.play2WarSettings
+
+Play2WarKeys.servletVersion := "3.0"
 
 libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.3.0-2",
